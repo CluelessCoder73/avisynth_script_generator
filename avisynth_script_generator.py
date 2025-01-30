@@ -15,7 +15,7 @@ def create_avisynth_scripts():
     # Process each video in the folder
     for filename in os.listdir(folder_path):
         if filename.endswith(('.mp4', '.mkv', '.avi')):  # Add more video extensions if needed
-            video_path = os.path.join(folder_path, filename)
+            video_path = os.path.join(folder_path, filename).replace('/', '\\')
             script_content = f'''v={source_filter}("{video_path}")
 a=LWLibavAudioSource("{video_path}")
 audioDub(v, a)
