@@ -19,7 +19,6 @@ def create_avisynth_scripts():
             video_path = os.path.join(folder_path, filename).replace('/', '\\')
             script_path = os.path.splitext(video_path)[0] + '.avs'
             
-            # Check if the .avs file already exists
             if os.path.exists(script_path):
                 if not messagebox.askyesno("File Exists", f"The file {script_path} already exists. Do you want to overwrite it?"):
                     continue
@@ -36,6 +35,9 @@ audioDub(v, a)
                 script_content = f'''a=FFAudioSource("{video_path}")
 v={source_filter}("{video_path}")
 audioDub(v, a)
+'''
+            elif source_filter == "AVISource":
+                script_content = f'''{source_filter}("{video_path}")
 '''
             
             if use_resizer:
@@ -55,7 +57,7 @@ root.title("AviSynth Script Generator")
 source_var = tk.StringVar(value="LWLibavVideoSource")
 source_label = tk.Label(root, text="Source Filter:")
 source_label.pack()
-source_options = ["LWLibavVideoSource", "FFVideoSource", "DirectShowSource"]
+source_options = ["LWLibavVideoSource", "FFVideoSource", "DirectShowSource", "AVISource"]
 source_menu = tk.OptionMenu(root, source_var, *source_options)
 source_menu.pack()
 
