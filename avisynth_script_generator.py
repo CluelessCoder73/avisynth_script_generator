@@ -15,7 +15,7 @@ def create_avisynth_scripts():
     use_deen = use_deen_var.get()
     
     for filename in os.listdir(folder_path):
-        if filename.endswith(('.mp4', '.mkv', '.avi')):
+        if filename.endswith(('.avi', '.mp4', '.mkv', '.m2ts', '.m2t', '.mts', '.mov', '.qt', '.wmv', '.asf', '.mpg', '.mpeg', '.vob', '.ts', '.m4v', '.flv', '.f4v', '.3gp', '.3g2', '.ogm', '.ogv', '.webm')):
             video_path = os.path.join(folder_path, filename).replace('/', '\\')
             script_path = os.path.splitext(video_path)[0] + '.avs'
             
